@@ -22,4 +22,5 @@
     <body>
         {{ $slot }}
     </body>
+    @stack('scripts')
 </html>

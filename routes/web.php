@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Rakordata\ApprovalData;
+use App\Http\Livewire\Rakordata\LeaderBoard;
 use App\Http\Livewire\Rakordata\Listdata;
 use Illuminate\Support\Facades\Route;
 

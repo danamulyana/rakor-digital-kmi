@@ -22,10 +22,17 @@
                   <form method="POST" action="{{ route('login') }}" class="pt-3">
                     @csrf
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-lg" id="nik" placeholder="nik" name="txtNik" :value="old('txtNik')" required autofocus>
+                      <input type="text" class="form-control form-control-lg" id="nik" placeholder="NIK" name="txtNik" :value="old('txtNik')" required autofocus>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" name="password" required autocomplete="current-password">
+                      <div class="input-group" id="show_hide_password">
+                        <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" name="password" required autocomplete="current-password">
+                        <div class="input-group-append align-items-center btn-primary">
+                          <span class="btn btn-sm text-white" onclick="PasswordToggle()">
+                            <i id="passToggle" class="las la-eye"></i>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                     <div class="mt-3">
                       <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
@@ -47,5 +54,25 @@
           <!-- content-wrapper ends -->
         </div>
         <!-- page-body-wrapper ends -->
-      </div>
+    </div>
+
+      @push('scripts')
+        <script defer>
+
+          function PasswordToggle(){
+            var x = document.getElementById("password");
+            var y = document.getElementById('passToggle');
+            console.log(y);
+            if (x.type === "password") {
+              x.type = "text";
+              y.classList.toggle("la-eye-slash");
+              y.classList.toggle("la-eye");
+            } else {
+              x.type = "password";
+              y.classList.toggle("la-eye");
+              y.classList.toggle("la-eye-slash");
+            }
+          }
+        </script>
+      @endpush
 </x-guest-layout>

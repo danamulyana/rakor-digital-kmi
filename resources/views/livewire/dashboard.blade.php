@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">Welcome {{ Auth::user()->txtFullname }}</h3>
-          <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
+          <h6 class="font-weight-bold mb-0">B I S A || <span class="font-weight-normal text-primary text-uppercase">Berani - Inovatif - Sinergi - Adaptif</span></h6>
         </div>
         <div class="col-12 col-xl-4">
          <div class="justify-content-end d-flex">
@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
@@ -115,7 +115,11 @@
                     <td>{{ $data->txtWaktuTempuh }}</td>
                     <td>{{ $data->floatPoint }}</td>
                     <td>
-                        <img src="{{ asset($data->txtPhotoPath) }}" style="height: 60px; width:60px; border-radius:0;">
+                      @if ($data->txtPhotoPath)
+                      <img src="{{ asset($data->txtPhotoPath) }}" style="height: 60px; width:60px; border-radius:0;">
+                      @else
+                      <img src="{{ asset('images/no-image.png') }}" style="height: 60px; width:60px; border-radius:0;">
+                      @endif
                     </td>
                     <td>
                         {{ \Carbon\Carbon::parse($data->dtnInsertedDate)->diffforhumans() }}
